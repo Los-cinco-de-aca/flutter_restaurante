@@ -148,6 +148,10 @@ class _LoginPageState extends State<LoginPage> {
                                   if (value.token.isNotEmpty) {
                                     final snackBar = SnackBar(
                                         content: Text("Login Correcto"));
+
+                                    Navigator.pushNamed(
+                                        context, "/welcome_page");
+
                                     scaffoldKey.currentState
                                         .showSnackBar(snackBar);
                                   } else {
@@ -167,7 +171,18 @@ class _LoginPageState extends State<LoginPage> {
                           color: Theme.of(context).accentColor,
                           shape: StadiumBorder(),
                         ),
-                        SizedBox(height: 15),
+                        FlatButton(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 80),
+                            onPressed: () {
+                              Navigator.pushNamed(context, "/registre_page");
+                            },
+                            color: Theme.of(context).accentColor,
+                            shape: StadiumBorder(),
+                            child: Text(
+                              "Registo",
+                              style: TextStyle(color: Colors.white),
+                            ))
                       ],
                     ),
                   ),
