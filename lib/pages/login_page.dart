@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    loginRequestModel = new LoginRequestModel();
+    loginRequestModel = LoginRequestModel();
   }
 
   @override
@@ -60,18 +60,18 @@ class _LoginPageState extends State<LoginPage> {
                       children: <Widget>[
                         SizedBox(height: 25),
                         Text(
-                          "Login",
+                          'Login',
                           style: Theme.of(context).textTheme.headline2,
                         ),
                         SizedBox(height: 20),
-                        new TextFormField(
+                        TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           onSaved: (input) => loginRequestModel.email = input,
                           validator: (input) => !input.contains('@')
-                              ? "El campo no contiene una estructura de correo"
+                              ? 'El campo no contiene una estructura de correo'
                               : null,
-                          decoration: new InputDecoration(
-                            hintText: "Email",
+                          decoration: InputDecoration(
+                            hintText: 'Email',
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context)
@@ -87,18 +87,18 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(height: 20),
-                        new TextFormField(
+                        TextFormField(
                           style:
                               TextStyle(color: Theme.of(context).accentColor),
                           keyboardType: TextInputType.text,
                           onSaved: (input) =>
                               loginRequestModel.password = input,
-                          validator: (input) => input.length < 5
-                              ? "El Password debe contener minomo 5 caracteres"
+                          validator: (input) => input.length < 3
+                              ? 'El Password debe contener minomo 5 caracteres'
                               : null,
                           obscureText: hidePassword,
-                          decoration: new InputDecoration(
-                            hintText: "Password",
+                          decoration: InputDecoration(
+                            hintText: 'Password',
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context)
@@ -138,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                                 isApiCallProcess = true;
                               });
 
-                              APIService apiService = new APIService();
+                              var apiService = APIService();
                               apiService.login(loginRequestModel).then((value) {
                                 if (value != null) {
                                   setState(() {
@@ -147,10 +147,9 @@ class _LoginPageState extends State<LoginPage> {
 
                                   if (value.token.isNotEmpty) {
                                     final snackBar = SnackBar(
-                                        content: Text("Login Correcto"));
+                                        content: Text('Login Correcto'));
 
-                                    Navigator.pushNamed(
-                                        context, "/welcome_page");
+                                    Navigator.pushNamed(context, '/menu_page');
 
                                     scaffoldKey.currentState
                                         .showSnackBar(snackBar);
@@ -165,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           },
                           child: Text(
-                            "Login",
+                            'Login',
                             style: TextStyle(color: Colors.white),
                           ),
                           color: Theme.of(context).accentColor,
@@ -175,12 +174,12 @@ class _LoginPageState extends State<LoginPage> {
                             padding: EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 80),
                             onPressed: () {
-                              Navigator.pushNamed(context, "/registre_page");
+                              Navigator.pushNamed(context, '/registre_page');
                             },
                             color: Theme.of(context).accentColor,
                             shape: StadiumBorder(),
                             child: Text(
-                              "Registo",
+                              'Registo',
                               style: TextStyle(color: Colors.white),
                             ))
                       ],
