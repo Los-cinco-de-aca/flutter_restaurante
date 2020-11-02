@@ -1,22 +1,22 @@
-class LoginResponseModel {
+class RegistreResponsModel {
   final String token;
-  final String error;
+  final String id;
 
-  LoginResponseModel({this.token, this.error});
+  RegistreResponsModel({this.token, this.id});
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
-    return LoginResponseModel(
+  factory RegistreResponsModel.fromJson(Map<String, dynamic> json) {
+    return RegistreResponsModel(
       token: json['token'] ?? '',
-      error: json['error'] ?? '',
+      id: json['id'] ?? '',
     );
   }
 }
 
-class LoginRequestModel {
+class RegistreRequestModel {
   String email;
   String password;
 
-  LoginRequestModel({
+  RegistreRequestModel({
     this.email,
     this.password,
   });

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_http_post_request/model/pruductos_model.dart';
+import 'package:flutter_http_post_request/pages/carrito_page.dart';
 import 'package:flutter_http_post_request/pages/registre_page.dart';
 import 'pages/registre_page.dart';
 import 'pages/login_page.dart';
 import 'pages/welcome_page.dart';
+import 'pages/menu_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<ProductosModel> _cart;
     return MaterialApp(
         title: 'Image Loader',
         debugShowCheckedModeBanner: false,
@@ -37,10 +41,12 @@ class MyApp extends StatelessWidget {
           ),
         ),
         home: LoginPage(),
-        initialRoute: "/",
+        initialRoute: '/',
         routes: {
           '/registre_page': (context) => FormPage(),
           '/welcome_page': (context) => Pagina1Page(),
+          '/menu_page': (context) => MyHomePage(),
+          '/carrito_page': (context) => Cart(_cart),
         });
   }
 }
